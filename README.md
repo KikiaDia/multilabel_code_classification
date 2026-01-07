@@ -1,17 +1,17 @@
 # Codeforces – Multilabel Classification of Algorithmic Problems
 
-**Auteur : Kikia Dia**  
-**Illuin Technology Challenge : Data Science**
+**Auteur :** Kikia Dia  
+**Illuin Technology Challenge :** Data Science
 
 ---
 
 ## Contexte
 
-Codeforces est une plateforme de programmation compétitive regroupant des milliers de problèmes d’algorithmique, chacun annoté par plusieurs **tags** représentant les notions algorithmiques mobilisées (`math`, `graphs`, `strings`, etc.).
+Codeforces est une plateforme de programmation compétitive regroupant des milliers de problèmes d'algorithmique, chacun annoté par plusieurs **tags** représentant les notions algorithmiques mobilisées (`math`, `graphs`, `strings`, etc.).
 
-Ce projet s’appuie sur un **sous-ensemble du dataset xCodeEval** composé de **4 982 problèmes distincts**, incluant :
+Ce projet s'appuie sur un **sous-ensemble du dataset xCodeEval** composé de **4 982 problèmes distincts**, incluant :
 - descriptions textuelles complètes,
-- spécifications d’entrée/sortie,
+- spécifications d'entrée/sortie,
 - notes éventuelles,
 - solutions validées en Python,
 - annotations multi-labels.
@@ -20,16 +20,18 @@ Ce projet s’appuie sur un **sous-ensemble du dataset xCodeEval** composé de *
 
 ## Objectif
 
-Construire un **algorithme de classification multi-label** capable de prédire automatiquement les tags associés à un problème d’algorithmique.
+Construire un **algorithme de classification multi-label** capable de prédire automatiquement les tags associés à un problème d'algorithmique.
 
-L’étude se concentre sur les **8 tags suivants** :
-
-<!-- ```python -->
+L'étude se concentre sur les **8 tags suivants** :
+```python
 ['math', 'graphs', 'strings', 'number theory',
- 'trees', 'geometry', 'games', 'probabilities'] 
+ 'trees', 'geometry', 'games', 'probabilities']
+```
+
+---
 
 ## Structure du projet
-
+```
 ├── notebooks/
 │   ├── EDA.ipynb
 │   └── Machine_learning_models.ipynb
@@ -45,7 +47,9 @@ L’étude se concentre sur les **8 tags suivants** :
 │   └── model_tfidf.joblib
 ├── README.md
 └── requirements.txt
+```
 
+---
 
 ## 🔍 Exploratory Data Analysis (EDA)
 
@@ -103,7 +107,7 @@ L’étude se concentre sur les **8 tags suivants** :
 
 ---
 
-## 📊 Métriques d’évaluation
+## 📊 Métriques d'évaluation
 
 - Micro F1-score
 - Macro F1-score
@@ -127,7 +131,7 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 - DFS / BFS
 - Récursion
 - Opérations modulo
-- Structures de graphes et d’arbres
+- Structures de graphes et d'arbres
 - Indices liés aux jeux et probabilités
 
 ---
@@ -145,3 +149,6 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 **Entraînement :**
 ```bash
 python src/train.py --data_path data/code_classification_dataset
+```
+
+---
