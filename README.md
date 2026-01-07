@@ -24,9 +24,9 @@ Construire un **algorithme de classification multi-label** capable de prédire a
 
 L’étude se concentre sur les **8 tags suivants** :
 
-```python
+<!-- ```python -->
 ['math', 'graphs', 'strings', 'number theory',
- 'trees', 'geometry', 'games', 'probabilities']
+ 'trees', 'geometry', 'games', 'probabilities'] 
 
 ## 🔍 Exploratory Data Analysis (EDA)
 
