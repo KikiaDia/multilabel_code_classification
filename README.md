@@ -28,6 +28,25 @@ L’étude se concentre sur les **8 tags suivants** :
 ['math', 'graphs', 'strings', 'number theory',
  'trees', 'geometry', 'games', 'probabilities'] 
 
+## Structure du projet
+
+├── notebooks/
+│   ├── EDA.ipynb
+│   └── Machine_learning_models.ipynb
+├── src/
+│   ├── data_preprocessing.py
+│   ├── models.py
+│   ├── training.py
+│   ├── evaluate.py
+│   ├── main.py
+│   └── code_features.py
+├── models/
+│   ├── model.joblib
+│   └── model_tfidf.joblib
+├── README.md
+└── requirements.txt
+
+
 ## 🔍 Exploratory Data Analysis (EDA)
 
 - Distribution des tags
