@@ -1,0 +1,42 @@
+description,source_code,ground_truth_tags,predicted_tags
+"Recently Polycarp noticed that some of the buttons of his keyboard are malfunctioning. For simplicity, we assume that Polycarp's keyboard contains $$$26$$$ buttons (one for each letter of the Latin alphabet). Each button is either working fine or malfunctioning. To check which buttons need replacement, Polycarp pressed some buttons in sequence, and a string $$$s$$$ appeared on the screen. When Polycarp presses a button with character $$$c$$$, one of the following events happened:  if the button was working correctly, a character $$$c$$$ appeared at the end of the string Polycarp was typing;  if the button was malfunctioning, two characters $$$c$$$ appeared at the end of the string. For example, suppose the buttons corresponding to characters a and c are working correctly, and the button corresponding to b is malfunctioning. If Polycarp presses the buttons in the order a, b, a, c, a, b, a, then the string he is typing changes as follows: a $$$\rightarrow$$$ abb $$$\rightarrow$$$ abba $$$\rightarrow$$$ abbac $$$\rightarrow$$$ abbaca $$$\rightarrow$$$ abbacabb $$$\rightarrow$$$ abbacabba.You are given a string $$$s$$$ which appeared on the screen after Polycarp pressed some buttons. Help Polycarp to determine which buttons are working correctly for sure (that is, this string could not appear on the screen if any of these buttons was malfunctioning).You may assume that the buttons don't start malfunctioning when Polycarp types the string: each button either works correctly throughout the whole process, or malfunctions throughout the whole process. The first line contains one integer $$$t$$$ ($$$1 \le t \le 100$$$) — the number of test cases in the input. Then the test cases follow. Each test case is represented by one line containing a string $$$s$$$ consisting of no less than $$$1$$$ and no more than $$$500$$$ lowercase Latin letters. For each test case, print one line containing a string $$$res$$$. The string $$$res$$$ should contain all characters which correspond to buttons that work correctly in alphabetical order, without any separators or repetitions. If all buttons may malfunction, $$$res$$$ should be empty. ","t = int(input())
+
+for tt in range(t):
+    s=input()
+    l=set()
+    #l.append(s[0])
+    n=len(s)
+    if n==1:
+        print(s,end="""")
+    else:
+        left = 0
+        right = 1
+        while left<n and right<n:
+            if s[left]==s[right]:
+                left+=2
+                right+=2
+            else:
+                l.add(s[left])
+                left+=1
+                right+=1
+        if left==n-1:
+            l.add(s[left])
+    li = list(l)    
+    li.sort()
+    for i in li:
+        print(i,end="""")
+    print("""")      
+          
+",['strings'],['strings']
+"Inaka has a disc, the circumference of which is $$$n$$$ units. The circumference is equally divided by $$$n$$$ points numbered clockwise from $$$1$$$ to $$$n$$$, such that points $$$i$$$ and $$$i + 1$$$ ($$$1 \leq i &lt; n$$$) are adjacent, and so are points $$$n$$$ and $$$1$$$.There are $$$m$$$ straight segments on the disc, the endpoints of which are all among the aforementioned $$$n$$$ points.Inaka wants to know if her image is rotationally symmetrical, i.e. if there is an integer $$$k$$$ ($$$1 \leq k &lt; n$$$), such that if all segments are rotated clockwise around the center of the circle by $$$k$$$ units, the new image will be the same as the original one. The first line contains two space-separated integers $$$n$$$ and $$$m$$$ ($$$2 \leq n \leq 100\,000$$$, $$$1 \leq m \leq 200\,000$$$) — the number of points and the number of segments, respectively. The $$$i$$$-th of the following $$$m$$$ lines contains two space-separated integers $$$a_i$$$ and $$$b_i$$$ ($$$1 \leq a_i, b_i \leq n$$$, $$$a_i \neq b_i$$$) that describe a segment connecting points $$$a_i$$$ and $$$b_i$$$. It is guaranteed that no segments coincide. Output one line — ""Yes"" if the image is rotationally symmetrical, and ""No"" otherwise (both excluding quotation marks). You can output each letter in any case (upper or lower). NoteThe first two examples are illustrated below. Both images become the same as their respective original ones after a clockwise rotation of $$$120$$$ degrees around the center.  ","n, m = [int(i) for i in input().split()]
+s = {tuple(sorted([int(i) - 1 for i in input().split()])) for i in range(m)}
+for i in range(1, n):
+    if n % i == 0 and all((n // i) % j for j in range(2, min(n // i, int((n // i) ** 0.5) + 2))):
+        if {tuple(sorted([(t[0] + i) % n, (t[1] + i) % n])) for t in s} == s:
+            print(""Yes"")
+            break
+else:
+    print(""No"")
+",['strings'],"['geometry', 'strings']"
+"SmallR is an archer. SmallR is taking a match of archer with Zanoes. They try to shoot in the target in turns, and SmallR shoots first. The probability of shooting the target each time is  for SmallR while  for Zanoes. The one who shoots in the target first should be the winner.Output the probability that SmallR will win the match. A single line contains four integers . Print a single real number, the probability that SmallR will win the match. The answer will be considered correct if the absolute or relative error doesn't exceed 10 - 6. ","a,b,c,d=list(map(int,input().split()))
+print((a/b)/(1-(1-(a/b))*(1-(c/d))))","['math', 'probabilities']","['math', 'probabilities']"

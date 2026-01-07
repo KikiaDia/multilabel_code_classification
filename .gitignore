@@ -1,0 +1,10 @@
+#data path
+data
+
+#venv path
+multilabel
+
+src\__pycache__
+src\.ipynb_checkpoints
+
+results
