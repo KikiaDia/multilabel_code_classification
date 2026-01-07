@@ -1,4 +1,4 @@
-# Codeforces – Multilabel Classification of Algorithmic Problems
+# Codeforces Multilabel Classification 
 
 **Auteur :** Kikia Dia  
 **Illuin Technology Challenge :** Data Science
@@ -75,17 +75,15 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 
 ## Modélisation
 
-**Stratégies multi-label :** `One-vs-Rest`, `MultiOutputClassifier`, `Classifier Chains`
-**Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
+- **Stratégies multi-label :** `One-vs-Rest`, `MultiOutputClassifier`, `Classifier Chains`
+- **Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
 
 ### Métriques d'évaluation
 - Micro F1-score, Macro F1-score, Hamming Loss, Subset Accuracy, Precision / Recall par tag
 
 ### Best Model
 
-`OneVsRest + LinearSVC (class_weight="balanced")`
-
-Optimisation via `GridSearchCV` (scoring : Micro F1)
+`OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` (scoring : Micro F1)
 
 ### Approches testées :
 
@@ -99,11 +97,11 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 
 ### Comparaison des approches (triées par Macro F1)
 
-                | Approach | F1 Micro | F1 Macro | Hamming Loss | Subset Accuracy |
-                |----------|----------|----------|--------------|-----------------|
-                | **Descriptions + code features** | **0.7251** | **0.6842** | **0.0945** | **0.4813** |
-                | Descriptions only | 0.7265 | 0.6653 | 0.0910 | 0.4832 |
-                | Resampled (SMOTE) | 0.6980 | 0.6431 | 0.0989 | 0.4627 |
+| Approach | F1 Micro | F1 Macro | Hamming Loss | Subset Accuracy |
+|----------|----------|----------|--------------|----------------|
+| **Descriptions + code features** | **0.7251** | **0.6842** | **0.0945** | **0.4813** |
+| Descriptions only | 0.7265 | 0.6653 | 0.0910 | 0.4832 |
+| Resampled (SMOTE) | 0.6980 | 0.6431 | 0.0989 | 0.4627 |
 
 **🏆 Meilleur modèle :** Descriptions + code features
 
@@ -113,18 +111,19 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 
 ### Métriques détaillées par label pour le meilleur modèle (Descriptions + code features)
 
-                    | Label | F1 | Precision | Recall | Accuracy |
-                    |-------|---------|-----------|--------|----------|
-                    | games | 0.8571 | 0.8571 | 0.8571 | 0.9925 |
-                    | geometry | 0.6027 | 0.5116 | 0.7333 | 0.9459 |
-                    | graphs | 0.6063 | 0.5423 | 0.6875 | 0.8134 |
-                    | math | 0.8114 | 0.7729 | 0.8539 | 0.8022 |
-                    | number theory | 0.5763 | 0.4766 | 0.7286 | 0.8601 |
-                    | probabilities | 0.4706 | 0.4444 | 0.5000 | 0.9664 |
-                    | strings | 0.8912 | 0.8958 | 0.8866 | 0.9608 |
-                    | trees | 0.6579 | 0.5556 | 0.8065 | 0.9030 |
-                    | **Mean** | **0.6842** | **0.6320** | **0.7567** | **0.9056** |
+| Label | F1 | Precision | Recall | Accuracy |
+|-------|----|-----------|--------|----------|
+| games | 0.8571 | 0.8571 | 0.8571 | 0.9925 |
+| geometry | 0.6027 | 0.5116 | 0.7333 | 0.9459 |
+| graphs | 0.6063 | 0.5423 | 0.6875 | 0.8134 |
+| math | 0.8114 | 0.7729 | 0.8539 | 0.8022 |
+| number theory | 0.5763 | 0.4766 | 0.7286 | 0.8601 |
+| probabilities | 0.4706 | 0.4444 | 0.5000 | 0.9664 |
+| strings | 0.8912 | 0.8958 | 0.8866 | 0.9608 |
+| trees | 0.6579 | 0.5556 | 0.8065 | 0.9030 |
+| **Mean** | **0.6842** | **0.6320** | **0.7567** | **0.9056** |
 
+---
 
 ## Utilisation du CLI
 
