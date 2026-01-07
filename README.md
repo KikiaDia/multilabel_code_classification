@@ -27,6 +27,15 @@ L'étude se concentre sur les **8 tags suivants** :
 ['math', 'graphs', 'strings', 'number theory',
  'trees', 'geometry', 'games', 'probabilities']
 ```
+Après filtrage pour ne garder que les exemples correspondant à ces tags, le dataset final contient **2 678 problèmes**.
+
+### Aperçu du dataset filtré
+
+| Description (début) | Input Spec (début) | Output Spec (début) | Notes (début) | Source Code (début) | Tags |
+|--------------------|------------------|-------------------|---------------|-------------------|------|
+| Once upon a time, Oolimry saw a suffix array... | The first line contain 2 integers $$$n$$$ and ... | Print how many strings produce such a suffix array... | NoteIn the first test case, "abb" is the only ... | import sys\ninput = sys.stdin.readline\n... | [math] |
+| You are given an array of n elements, you must... | The first line contains integer n (1 ≤ n ≤ 100...) | Print integer k on the first line — the least ... |  | def gcd(a,b):\n if b==0:return a\n return ... | [number theory, math] |
+| Given a tree with n nodes, each edge has a weight... | First line contains integer n (1 ≤ n ≤ 10^5)... | Output the minimum spanning tree weight... |  | def dfs(u, parent):\n for v, w in adj[u]:\n ... | [trees, graphs] |
 
 ---
 
