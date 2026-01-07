@@ -34,6 +34,14 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 | Once upon a time, Oolimry saw a suffix array... | The first line contain 2 integers $$$n$$$ and ... | Print how many strings produce such a suffix array... | NoteIn the first test case, "abb" is the only ... | import sys\ninput = sys.stdin.readline\n... | [math] |
 | You are given an array of n elements, you must... | The first line contains integer n (1 ≤ n ≤ 100...) | Print integer k on the first line — the least ... |  | def gcd(a,b):\n if b==0:return a\n return ... | [number theory, math] |
 
+### Data Splitting
+
+Le dataset a été divisé en deux ensembles :
+- **Train :** 80% des données (2 142 problèmes)
+- **Validation :** 20% des données (536 problèmes)
+
+---
+
 ### Structure du projet
 ```
 ├── notebooks/
@@ -79,13 +87,13 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 - **Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
 - **Métriques d'évaluation :** Micro F1-score, Macro F1-score, Hamming Loss, Subset Accuracy, Precision / Recall par tag
 
-### Best Model: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` 
+-**Best Model**: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` 
 
 ### Approches testées :
 
-- description only : 
+- description
 
-- description + features extraites du code Python 
+- description + features extraits du code Python 
 
 - gestion du déséquilibre avec MLSMOTE (Multi-Label SMOTE)
 
@@ -99,30 +107,19 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 | Descriptions only | 0.7265 | 0.6653 | 0.0910 | 0.4832 |
 | Resampled (SMOTE) | 0.6980 | 0.6431 | 0.0989 | 0.4627 |
 
-**🏆 Meilleur modèle :** Descriptions + code features
+**🏆 Meilleur approche :** Descriptions + code features
 
 ### Matrices de confusion
 
 ![Matrices de confusion](images/matrices_confusion.png)
 
-### Métriques détaillées par label pour le meilleur modèle (Descriptions + code features)
-
-| Label | F1 | Precision | Recall | Accuracy |
-|-------|----|-----------|--------|----------|
-| games | 0.8571 | 0.8571 | 0.8571 | 0.9925 |
-| geometry | 0.6027 | 0.5116 | 0.7333 | 0.9459 |
-| graphs | 0.6063 | 0.5423 | 0.6875 | 0.8134 |
-| math | 0.8114 | 0.7729 | 0.8539 | 0.8022 |
-| number theory | 0.5763 | 0.4766 | 0.7286 | 0.8601 |
-| probabilities | 0.4706 | 0.4444 | 0.5000 | 0.9664 |
-| strings | 0.8912 | 0.8958 | 0.8866 | 0.9608 |
-| trees | 0.6579 | 0.5556 | 0.8065 | 0.9030 |
-| **Mean** | **0.6842** | **0.6320** | **0.7567** | **0.9056** |
+#### f1_score par tag
 
 ![f1_score_per_tag](images/f1_score.png)
 
 **best tags ** : `math`, `strings`, `games`, `trees`
 
+**Pour plus de détails, consultez le notebook d'entraînement** `notebooks/Machine_learning_models.ipynb`
 ---
 
 ## Utilisation du CLI
@@ -142,4 +139,27 @@ python src/main.py evaluate --model models/model_hybrid.joblib --data data/test 
 
 ```
 
-  
+---
+
+## Autres Pistes d'amélioration
+
+### Modèles Transformers
+
+Des expérimentations ont été menées avec des modèles Transformers pré-entraînés, notamment :
+```python
+model_names = [
+    "microsoft/codebert-base",
+    "microsoft/graphcodebert-base",
+    "microsoft/unixcoder-base",
+    "bert-base-uncased"
+]
+```
+
+Ces modèles, spécialement conçus pour la compréhension du code (CodeBERT, GraphCodeBERT, UniXcoder) ou du texte naturel (BERT), pourraient potentiellement améliorer les performances en capturant des représentations sémantiques plus riches.
+
+**Pour plus de détails sur les expérimentations avec les Transformers, consultez le notebook :** `notebooks/transformers.ipynb`
+
+**Autres pistes** : 
+
+- Fine-tuning des modèles Transformers sur le dataset Codeforces
+- data augmentation 
