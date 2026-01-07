@@ -27,6 +27,18 @@ L'étude se concentre sur les **8 tags suivants** :
 ```
 Après filtrage pour ne garder que les exemples correspondant à ces tags, le dataset final contient **2 678 problèmes**.
 
+Nombre d'exemples par tag (8 cibles) :
+math: 1409
+graphs: 542
+strings: 422
+number theory: 350
+trees: 324
+geometry: 166
+games: 105
+probabilities: 92
+
+![tag distribution](images/tags_distribution.png)
+
 ### Dataset preview
 
 | prob_desc_description | prob_desc_input_spec | prob_desc_output_spec | prob_desc_notes | source_code | tags |
