@@ -77,13 +77,9 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 
 - **Stratégies multi-label :** `One-vs-Rest`, `MultiOutputClassifier`, `Classifier Chains`
 - **Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
+- **Métriques d'évaluation :** Micro F1-score, Macro F1-score, Hamming Loss, Subset Accuracy, Precision / Recall par tag
 
-### Métriques d'évaluation
-- Micro F1-score, Macro F1-score, Hamming Loss, Subset Accuracy, Precision / Recall par tag
-
-### Best Model
-
-`OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` (scoring : Micro F1)
+### Best Model: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` 
 
 ### Approches testées :
 
@@ -122,6 +118,10 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 | strings | 0.8912 | 0.8958 | 0.8866 | 0.9608 |
 | trees | 0.6579 | 0.5556 | 0.8065 | 0.9030 |
 | **Mean** | **0.6842** | **0.6320** | **0.7567** | **0.9056** |
+
+![f1_score_per_tag](images/f1_score.png)
+
+**best tags ** : `math`, `strings`, `games`, `trees`
 
 ---
 
