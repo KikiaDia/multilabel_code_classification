@@ -10,13 +10,11 @@
 Codeforces est une plateforme de programmation compétitive regroupant des milliers de problèmes d'algorithmique, chacun annoté par plusieurs **tags** représentant les notions algorithmiques mobilisées (`math`, `graphs`, `strings`, etc.).
 
 Ce projet s'appuie sur un **sous-ensemble du dataset xCodeEval** composé de **4 982 problèmes distincts**, incluant :
-- descriptions textuelles complètes,
-- spécifications d'entrée/sortie,
-- notes éventuelles,
-- solutions validées en Python,
-- annotations multi-labels.
-
----
+- `prob_desc_description` : descriptions textuelles complètes ,
+- `prob_desc_input_spec`, `prob_desc_output_spec` : spécifications d'entrée/sortie,
+- `prob_desc_notes` : notes éventuelles,
+- `source_code` : solutions validées en Python,
+- `tags` : annotations multi-labels.
 
 ## Objectif
 
@@ -29,15 +27,12 @@ L'étude se concentre sur les **8 tags suivants** :
 ```
 Après filtrage pour ne garder que les exemples correspondant à ces tags, le dataset final contient **2 678 problèmes**.
 
-### Aperçu du dataset filtré
+### Dataset preview
 
-| Description (début) | Input Spec (début) | Output Spec (début) | Notes (début) | Source Code (début) | Tags |
+| prob_desc_description | prob_desc_input_spec | prob_desc_output_spec | prob_desc_notes | source_code | tags |
 |--------------------|------------------|-------------------|---------------|-------------------|------|
 | Once upon a time, Oolimry saw a suffix array... | The first line contain 2 integers $$$n$$$ and ... | Print how many strings produce such a suffix array... | NoteIn the first test case, "abb" is the only ... | import sys\ninput = sys.stdin.readline\n... | [math] |
 | You are given an array of n elements, you must... | The first line contains integer n (1 ≤ n ≤ 100...) | Print integer k on the first line — the least ... |  | def gcd(a,b):\n if b==0:return a\n return ... | [number theory, math] |
-| Given a tree with n nodes, each edge has a weight... | First line contains integer n (1 ≤ n ≤ 10^5)... | Output the minimum spanning tree weight... |  | def dfs(u, parent):\n for v, w in adj[u]:\n ... | [trees, graphs] |
-
----
 
 ## Structure du projet
 ```
@@ -57,52 +52,36 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 ├── README.md
 └── requirements.txt
 ```
+## Exploratory Data Analysis (EDA)
 
----
-
-## 🔍 Exploratory Data Analysis (EDA)
-
+- Longueur des descriptions
 - Distribution des tags
 - Co-occurrence des labels
-- Longueur des descriptions
 - Wordclouds par tag
 - Analyse des patterns algorithmiques dans le code
 
----
+### Text Preprocessing
 
-## 🧹 Prétraitement du texte
+**Champs concatenés  pour la description :** `prob_desc_description`,`prob_desc_input_spec`,`prob_desc_output_spec`, `prob_desc_notes`
 
-**Champs utilisés :**
-- `prob_desc_description`
-- `prob_desc_input_spec`
-- `prob_desc_output_spec`
-- `prob_desc_notes`
-
-**Étapes :**
-- Nettoyage et normalisation
+**Nettoyage du texte :**
 - Tokenisation (NLTK)
+- Normalisation
 - Suppression de stopwords
 - Lemmatisation
 
----
-
-## 🧾 Représentation des labels
+## Représentation des labels
 
 - Classification **multi-label**
-- `MultiLabelBinarizer`
-- Suppression des exemples hors tags cibles
+- one-hot-encoding avec `MultiLabelBinarizer`
 
----
-
-## 📐 Vectorisation
+## Text Vectorisation
 
 - TF-IDF
 - `max_features = 5000`
 - `ngram_range = (1, 2)`
 
----
-
-## 🤖 Modélisation
+## Modélisation
 
 **Stratégies multi-label :**
 - One-vs-Rest
@@ -116,7 +95,7 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 
 ---
 
-## 📊 Métriques d'évaluation
+## Métriques d'évaluation
 
 - Micro F1-score
 - Macro F1-score
@@ -126,15 +105,16 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 
 ---
 
-## 🏆 Modèle retenu
+## Modèle retenu
 
 `OneVsRest + LinearSVC (class_weight="balanced")`
 
 Optimisation via `GridSearchCV` (scoring : Micro F1)
 
+
 ---
 
-## 🔗 Approche hybride : texte + code
+## Approche hybride : texte + code features
 
 **Features extraites du code Python :**
 - DFS / BFS
@@ -145,19 +125,20 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 
 ---
 
-## ⚖️ Gestion du déséquilibre
+## Gestion du déséquilibre
 
 - MLSMOTE (Multi-Label SMOTE)
 - Amélioration du Macro F1-score
-- Meilleure prédiction des tags rares
 
----
 
-## 🚀 Utilisation
+## Evaluation 
+
+
+
+
+## Utilisation
 
 **Entraînement :**
 ```bash
 python src/train.py --data_path data/code_classification_dataset
 ```
-
----
