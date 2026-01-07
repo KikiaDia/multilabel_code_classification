@@ -34,7 +34,7 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 | Once upon a time, Oolimry saw a suffix array... | The first line contain 2 integers $$$n$$$ and ... | Print how many strings produce such a suffix array... | NoteIn the first test case, "abb" is the only ... | import sys\ninput = sys.stdin.readline\n... | [math] |
 | You are given an array of n elements, you must... | The first line contains integer n (1 ≤ n ≤ 100...) | Print integer k on the first line — the least ... |  | def gcd(a,b):\n if b==0:return a\n return ... | [number theory, math] |
 
-## Structure du projet
+### Structure du projet
 ```
 ├── notebooks/
 │   ├── EDA.ipynb
@@ -52,57 +52,36 @@ Après filtrage pour ne garder que les exemples correspondant à ces tags, le da
 ├── README.md
 └── requirements.txt
 ```
-## Exploratory Data Analysis (EDA)
-
-- Longueur des descriptions
-- Distribution des tags
-- Co-occurrence des labels
-- Wordclouds par tag
-- Analyse des patterns algorithmiques dans le code
-
-### Text Preprocessing
+### Exploratory Data Analysis (EDA)
+- Longueur des descriptions, Distribution des tags, Co-occurrence des labels, Wordclouds par tag, Analyse des patterns algorithmiques dans le code
+#### Text Preprocessing
 
 **Champs concatenés  pour la description :** `prob_desc_description`,`prob_desc_input_spec`,`prob_desc_output_spec`, `prob_desc_notes`
 
 **Nettoyage du texte :** Tokenisation (NLTK), Normalisation, Suppression de stopwords, Lemmatisation
-### Wordcloud avant preprocessing
+#### Wordcloud avant preprocessing
 
 ![Wordcloud avant preprocessing](images/before_preprocessing.png)
 
-### Wordcloud après preprocessing
+#### Wordcloud après preprocessing
 
 ![Wordcloud après preprocessing](images/after_preprocessing.png)
 
 ### Représentation des labels :
 - one-hot-encoding avec `MultiLabelBinarizer`
 
----
-
-## Text Vectorisation
-- TF-IDF:  `max_features = 5000`, `ngram_range = (1, 2)`
+### Text Vectorisation
+**TF-IDF:**  `max_features = 5000`, `ngram_range = (1, 2)`
 
 ## Modélisation
 
-**Stratégies multi-label :**
-- One-vs-Rest
-- MultiOutputClassifier
-- Classifier Chains
-
-**Classificateurs testés :**
-- Logistic Regression
-- Random Forest
-- LinearSVC
+**Stratégies multi-label :** `One-vs-Rest`, `MultiOutputClassifier`, `Classifier Chains`
+**Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
 
 ### Métriques d'évaluation
+- Micro F1-score, Macro F1-score, Hamming Loss, Subset Accuracy, Precision / Recall par tag
 
-- Micro F1-score
-- Macro F1-score
-- Hamming Loss
-- Subset Accuracy
-- Precision / Recall par tag
-
-
-### Best Modèle 
+### Best Model
 
 `OneVsRest + LinearSVC (class_weight="balanced")`
 
@@ -120,11 +99,11 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 
 ### Comparaison des approches (triées par Macro F1)
 
-| Approach | F1 Micro | F1 Macro | Hamming Loss | Subset Accuracy |
-|----------|----------|----------|--------------|-----------------|
-| **Descriptions + code features** | **0.7251** | **0.6842** | **0.0945** | **0.4813** |
-| Descriptions only | 0.7265 | 0.6653 | 0.0910 | 0.4832 |
-| Resampled (SMOTE) | 0.6980 | 0.6431 | 0.0989 | 0.4627 |
+                | Approach | F1 Micro | F1 Macro | Hamming Loss | Subset Accuracy |
+                |----------|----------|----------|--------------|-----------------|
+                | **Descriptions + code features** | **0.7251** | **0.6842** | **0.0945** | **0.4813** |
+                | Descriptions only | 0.7265 | 0.6653 | 0.0910 | 0.4832 |
+                | Resampled (SMOTE) | 0.6980 | 0.6431 | 0.0989 | 0.4627 |
 
 **🏆 Meilleur modèle :** Descriptions + code features
 
@@ -134,17 +113,17 @@ Optimisation via `GridSearchCV` (scoring : Micro F1)
 
 ### Métriques détaillées par label pour le meilleur modèle (Descriptions + code features)
 
-| Label | F1 | Precision | Recall | Accuracy |
-|-------|---------|-----------|--------|----------|
-| games | 0.8571 | 0.8571 | 0.8571 | 0.9925 |
-| geometry | 0.6027 | 0.5116 | 0.7333 | 0.9459 |
-| graphs | 0.6063 | 0.5423 | 0.6875 | 0.8134 |
-| math | 0.8114 | 0.7729 | 0.8539 | 0.8022 |
-| number theory | 0.5763 | 0.4766 | 0.7286 | 0.8601 |
-| probabilities | 0.4706 | 0.4444 | 0.5000 | 0.9664 |
-| strings | 0.8912 | 0.8958 | 0.8866 | 0.9608 |
-| trees | 0.6579 | 0.5556 | 0.8065 | 0.9030 |
-| **Mean** | **0.6842** | **0.6320** | **0.7567** | **0.9056** |
+                    | Label | F1 | Precision | Recall | Accuracy |
+                    |-------|---------|-----------|--------|----------|
+                    | games | 0.8571 | 0.8571 | 0.8571 | 0.9925 |
+                    | geometry | 0.6027 | 0.5116 | 0.7333 | 0.9459 |
+                    | graphs | 0.6063 | 0.5423 | 0.6875 | 0.8134 |
+                    | math | 0.8114 | 0.7729 | 0.8539 | 0.8022 |
+                    | number theory | 0.5763 | 0.4766 | 0.7286 | 0.8601 |
+                    | probabilities | 0.4706 | 0.4444 | 0.5000 | 0.9664 |
+                    | strings | 0.8912 | 0.8958 | 0.8866 | 0.9608 |
+                    | trees | 0.6579 | 0.5556 | 0.8065 | 0.9030 |
+                    | **Mean** | **0.6842** | **0.6320** | **0.7567** | **0.9056** |
 
 
 ## Utilisation du CLI
