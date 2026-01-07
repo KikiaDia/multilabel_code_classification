@@ -64,14 +64,15 @@ Le dataset a été divisé en deux ensembles :
 - Longueur des descriptions, Distribution des tags, Co-occurrence des labels, Wordclouds par tag, Analyse des patterns algorithmiques dans le code
 #### Text Preprocessing
 
-**Champs concatenés  pour la description :** `prob_desc_description`,`prob_desc_input_spec`,`prob_desc_output_spec`, `prob_desc_notes`
+- **Champs concatenés  pour la description :** `prob_desc_description`,`prob_desc_input_spec`,`prob_desc_output_spec`, `prob_desc_notes`
 
-**Nettoyage du texte :** Tokenisation (NLTK), Normalisation, Suppression de stopwords, Lemmatisation
-#### Wordcloud avant preprocessing
+- **Nettoyage du texte :** Tokenisation (NLTK), Normalisation, Suppression de stopwords, Lemmatisation
+
+- Before preprocessing
 
 ![Wordcloud avant preprocessing](images/before_preprocessing.png)
 
-#### Wordcloud après preprocessing
+- After preprocessing
 
 ![Wordcloud après preprocessing](images/after_preprocessing.png)
 
@@ -79,7 +80,7 @@ Le dataset a été divisé en deux ensembles :
 - one-hot-encoding avec `MultiLabelBinarizer`
 
 ### Text Vectorisation
-**TF-IDF:**  `max_features = 5000`, `ngram_range = (1, 2)`
+- **TF-IDF:**  `max_features = 5000`, `ngram_range = (1, 2)`
 
 ## Modélisation
 
@@ -117,7 +118,7 @@ Le dataset a été divisé en deux ensembles :
 
 ![f1_score_per_tag](images/f1_score.png)
 
-**best tags ** : `math`, `strings`, `games`, `trees`
+**best tags** : `math`, `strings`, `games`, `trees`
 
 **Pour plus de détails, consultez le notebook d'entraînement** `notebooks/Machine_learning_models.ipynb`
 ---
@@ -130,7 +131,8 @@ Le dataset a été divisé en deux ensembles :
 python src/main.py train --data data/train --output models/model.joblib
 
 python src/main.py evaluate --model models/model.joblib --data data/test  
-
+```
+```bash
 # training and evaluation on description + code features 
 
 python src/main.py train --data data/train --output models/model_hybrid.joblib --hybrid
@@ -157,9 +159,5 @@ model_names = [
 
 Ces modèles, spécialement conçus pour la compréhension du code (CodeBERT, GraphCodeBERT, UniXcoder) ou du texte naturel (BERT), pourraient potentiellement améliorer les performances en capturant des représentations sémantiques plus riches.
 
-**Pour plus de détails sur les expérimentations avec les Transformers, consultez le notebook :** `notebooks/transformers.ipynb`
+Pour plus de détails sur les expérimentations avec les Transformers, consultez le notebook : `notebooks/transformers.ipynb`
 
-**Autres pistes** : 
-
-- Fine-tuning des modèles Transformers sur le dataset Codeforces
-- data augmentation 
