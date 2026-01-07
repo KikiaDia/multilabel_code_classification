@@ -120,7 +120,7 @@ Le dataset a été divisé en deux ensembles :
 
 **best tags** : `math`, `strings`, `games`, `trees`
 
-**Pour plus de détails, consultez le notebook d'entraînement** `notebooks/Machine_learning_models.ipynb`
+Pour plus de détails, consultez le notebook d'entraînement `notebooks/Machine_learning_models.ipynb`
 ---
 
 ## Utilisation du CLI
