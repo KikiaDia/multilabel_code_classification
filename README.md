@@ -46,14 +46,6 @@ probabilities: 92
 | Once upon a time, Oolimry saw a suffix array... | The first line contain 2 integers $$$n$$$ and ... | Print how many strings produce such a suffix array... | NoteIn the first test case, "abb" is the only ... | import sys\ninput = sys.stdin.readline\n... | [math] |
 | You are given an array of n elements, you must... | The first line contains integer n (1 ≤ n ≤ 100...) | Print integer k on the first line — the least ... |  | def gcd(a,b):\n if b==0:return a\n return ... | [number theory, math] |
 
-### Data Splitting
-
-Le dataset a été divisé en deux ensembles :
-- **Train :** 80% des données (2 142 problèmes)
-- **Validation :** 20% des données (536 problèmes)
-
----
-
 ### Structure du projet
 ```
 ├── notebooks/
@@ -90,6 +82,12 @@ Le dataset a été divisé en deux ensembles :
 
 ### Représentation des labels :
 - one-hot-encoding avec `MultiLabelBinarizer`
+
+### Data Splitting
+
+Le dataset a été divisé en deux ensembles :
+- **Train :** 80% des données (2 142 problèmes)
+- **Validation :** 20% des données (536 problèmes)
 
 ### Text Vectorisation
 - **TF-IDF:**  `max_features = 5000`, `ngram_range = (1, 2)`
