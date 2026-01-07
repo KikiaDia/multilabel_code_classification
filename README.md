@@ -86,9 +86,9 @@ Le dataset a été divisé en deux ensembles :
 
 - **Stratégies multi-label :** `One-vs-Rest`, `MultiOutputClassifier`, `Classifier Chains`
 - **Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
-- **Métriques d'évaluation :** Micro F1-score, Macro F1-score, Hamming Loss, Subset Accuracy, Precision / Recall par tag
+- **Métriques d'évaluation :** `Micro F1-score`, `Macro F1-score`, `Hamming Loss`, `Subset Accuracy`, `Precision / Recall par tag`
 
--**Best Model**: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` 
+- **Best Model**: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` 
 
 ### Approches testées :
 
