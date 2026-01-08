@@ -70,7 +70,7 @@ probabilities: 92
 
 - **Champs concatenés  pour la description :** `prob_desc_description`,`prob_desc_input_spec`,`prob_desc_output_spec`, `prob_desc_notes`
 
-- **Nettoyage du texte :** Tokenisation (NLTK), Normalisation, Suppression de stopwords, Lemmatisation
+- **Nettoyage du texte :** Tokenisation (NLTK), Normalisation, Suppression de stopwords, stemming
 
 - Before preprocessing
 
