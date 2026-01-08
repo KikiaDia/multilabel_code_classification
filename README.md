@@ -175,5 +175,16 @@ model_names = [
 
 Ces modèles, spécialement conçus pour la compréhension du code (CodeBERT, GraphCodeBERT, UniXcoder) ou du texte naturel (BERT), pourraient potentiellement améliorer les performances en capturant des représentations sémantiques plus riches.
 
+**Comparaison des modèles Transformers (dernière époque)** 
+
+| Modèle                     | F1 Micro | F1 Macro | Hamming Loss | Train Loss | Val Loss | Runtime (s) |
+|----------------------------|----------|----------|--------------|------------|----------|------------|
+| microsoft/graphcodebert-base | 0.7865  | 0.7394   | 0.0665       | 0.0879     | 0.2050   | 17.41      |
+| microsoft/unixcoder-base    | 0.7609  | 0.7276   | 0.0742       | 0.0808     | 0.2200   | 17.28      |
+| microsoft/codebert-base     | 0.7618  | 0.6996   | 0.0732       | 0.104      | 0.2101   | 17.16      |
+| bert-base-uncased           | 0.7613  | 0.6793   | 0.0730       | 0.1217     | 0.2135   | 17.78      |
+
+remarque : risque d'overfitting, modèles complexes
+
 Pour plus de détails sur les expérimentations avec les Transformers, consultez le notebook : `notebooks/transformers.ipynb`
 
