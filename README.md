@@ -8,8 +8,8 @@
 ```
 ├── notebooks/
 │   ├── EDA.ipynb
-│   ├── transformers.ipynb
-│   └── Machine_learning_models.ipynb
+│   ├── Machine_learning_models.ipynb
+│   └── transformers.ipynb
 ├── src/
 │   ├── data_preprocessing.py
 │   ├── models.py
