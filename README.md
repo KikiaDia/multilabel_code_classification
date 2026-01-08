@@ -28,13 +28,13 @@ L'étude se concentre sur les **8 tags suivants** :
 Après filtrage pour ne garder que les exemples correspondant à ces tags, le dataset final contient **2 678 problèmes**.
 
 Nombre d'exemples par tag (8 cibles) :
-math: 1409
-graphs: 542
+math: 1409,
+graphs: 542,
 strings: 422
-number theory: 350
-trees: 324
-geometry: 166
-games: 105
+number theory: 350,
+trees: 324,
+geometry: 166,
+games: 105,
 probabilities: 92
 
 ![tag distribution](images/tags_distribution.png)
@@ -131,6 +131,7 @@ Le dataset a été divisé en deux ensembles :
 **best tags** : `math`, `strings`, `games`, `trees`
 
 Pour plus de détails, consultez le notebook d'entraînement `notebooks/Machine_learning_models.ipynb`
+
 ---
 
 ## Utilisation du CLI
