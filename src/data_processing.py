@@ -20,10 +20,10 @@ import random
 # -----------------------------
 # Fixer la seed globale
 # -----------------------------
-# SEED = 42
-# np.random.seed(SEED)
-# random.seed(SEED)
-# os.environ["PYTHONHASHSEED"] = str(SEED)
+SEED = 42
+np.random.seed(SEED)
+random.seed(SEED)
+os.environ["PYTHONHASHSEED"] = str(SEED)
 
 nltk.download('punkt_tab') 
 nltk.download('stopwords')
