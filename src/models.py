@@ -21,9 +21,21 @@ class BaselineModel:
         
     def build(self, use_precomputed_features=True):
         """Construit le modèle"""
+        linear_svc = LinearSVC(
+            C=1.0,
+            class_weight="balanced",
+            dual="auto",
+            fit_intercept=True,
+            intercept_scaling=1,
+            loss="squared_hinge",
+            penalty="l2",
+            tol=1e-4,
+            max_iter=1000,
+            random_state=42
+        )
         if use_precomputed_features:
             self.model = OneVsRestClassifier(
-                LinearSVC(class_weight='balanced', max_iter=1000, random_state=42),
+                linear_svc,
                 n_jobs=-1
             )
         else:
@@ -36,7 +48,7 @@ class BaselineModel:
                     max_df=0.8
                 )),
                 ('clf', OneVsRestClassifier(
-                    LinearSVC(class_weight='balanced', max_iter=1000, random_state=42),
+                    linear_svc,
                     n_jobs=-1
                 ))
             ])

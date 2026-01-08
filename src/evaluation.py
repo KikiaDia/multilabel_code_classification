@@ -14,10 +14,10 @@ class Evaluator:
         """Calcule les métriques globales et prépare le rapport par tag."""
         metrics = {}
         
-        # Identifier les colonnes (tags) avec au moins un vrai positif
-        non_zero_classes = y_true.sum(axis=0) > 0
-        y_true = y_true[:, non_zero_classes]
-        y_pred = y_pred[:, non_zero_classes]
+        # # Identifier les colonnes (tags) avec au moins un vrai positif
+        # non_zero_classes = y_true.sum(axis=0) > 0
+        # y_true = y_true[:, non_zero_classes]
+        # y_pred = y_pred[:, non_zero_classes]
 
 
         metrics['hamming_loss'] = hamming_loss(y_true, y_pred)
@@ -38,11 +38,11 @@ class Evaluator:
         metrics['micro_f1'] = f1_micro
         metrics['macro_f1'] = f1_macro
 
-        target_names_filtered = [tag for i, tag in enumerate(self.target_tags) if non_zero_classes[i]]
+        # target_names_filtered = [tag for i, tag in enumerate(self.target_tags) if non_zero_classes[i]]
 
         # Rapport détaillé par tag
         metrics['report'] = classification_report(
-            y_true, y_pred, target_names= target_names_filtered, 
+            y_true, y_pred, target_names= self.target_tags, 
             zero_division=0
         )
         return metrics

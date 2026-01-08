@@ -98,7 +98,7 @@ Le dataset a été divisé en deux ensembles :
 - **Classificateurs testés :** `Logistic Regression`,`Random Forest`,`LinearSVC`
 - **Métriques d'évaluation :** `Micro F1-score`, `Macro F1-score`, `Hamming Loss`, `Subset Accuracy`, `Precision / Recall par tag`
 
-- **Best Model**: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` 
+- **Best Model**: `OneVsRest + LinearSVC (class_weight="balanced")`, Optimisation via `GridSearchCV` , best_params = {'estimator__C': 0.1,'estimator__loss': 'squared_hinge''estimator__max_iter': 1000, 'estimator__tol': 0.0001}
 
 ### Approches testées :
 
@@ -114,9 +114,9 @@ Le dataset a été divisé en deux ensembles :
 
 | Approach | F1 Micro | F1 Macro | Hamming Loss | Subset Accuracy |
 |----------|----------|----------|--------------|----------------|
-| **Descriptions + code features** | **0.7251** | **0.6842** | **0.0945** | **0.4813** |
-| Descriptions only | 0.7265 | 0.6653 | 0.0910 | 0.4832 |
-| Resampled (SMOTE) | 0.6980 | 0.6431 | 0.0989 | 0.4627 |
+| **Descriptions + code features** | **0.7428** | **0.6969** | **0.0898** | **0.4925** |
+| Descriptions only | 0.7139 | 0.6663 | 0.0989 | 0.4459 |
+| Resampled (SMOTE) | 0.6978 | 0.6670 | 0.1056 | 0.4216 |
 
 **🏆 Meilleur approche :** Descriptions + code features
 
@@ -128,7 +128,7 @@ Le dataset a été divisé en deux ensembles :
 
 ![f1_score_per_tag](images/f1_score.png)
 
-**best tags** : `math`, `strings`, `games`, `trees`
+**best predicted tags** : `math`, `strings`, `games`, `trees`
 
 Pour plus de détails, consultez le notebook d'entraînement `notebooks/Machine_learning_models.ipynb`
 
@@ -142,6 +142,9 @@ Pour plus de détails, consultez le notebook d'entraînement `notebooks/Machine_
 python src/main.py train --data data/train --output models/model.joblib
 
 python src/main.py evaluate --model models/model.joblib --data data/test  
+
+# prediction unitaire 
+python src/main.py predict --model models/model.joblib --text """Numbers...."""
 ```
 ```bash
 # training and evaluation on description + code features 
@@ -150,6 +153,8 @@ python src/main.py train --data data/train --output models/model_hybrid.joblib -
 
 python src/main.py evaluate --model models/model_hybrid.joblib --data data/test --hybrid --results-path results/predictions_test_hybrid.csv
 
+# prediction unitaire 
+python src/main.py predict --model models/model_hybrid.joblib --text "Numbers.." --code """ import..."""
 ```
 
 ---

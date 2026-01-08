@@ -15,6 +15,15 @@ import contractions
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+import random
+
+# -----------------------------
+# Fixer la seed globale
+# -----------------------------
+# SEED = 42
+# np.random.seed(SEED)
+# random.seed(SEED)
+# os.environ["PYTHONHASHSEED"] = str(SEED)
 
 nltk.download('punkt_tab') 
 nltk.download('stopwords')
@@ -34,7 +43,8 @@ class DataProcessor:
 
         
         self.stopwords = set(stopwords.words("english"))
-        self.lemmatizer = WordNetLemmatizer()
+        # self.lemmatizer = WordNetLemmatizer()
+        self.stemmer = nltk.stem.SnowballStemmer("english")
 
     def clean_text(self, text: str) -> str:
         if pd.isna(text):
@@ -49,7 +59,8 @@ class DataProcessor:
 
         tokens = nltk.word_tokenize(text)
         tokens = [t for t in tokens if t not in self.stopwords]
-        tokens = [self.lemmatizer.lemmatize(t) for t in tokens]
+        # tokens = [self.lemmatizer.lemmatize(t) for t in tokens]
+        tokens = [self.stemmer.stem(word) for word in tokens]
 
         return " ".join(tokens)
 
