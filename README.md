@@ -4,7 +4,24 @@
 **Illuin Technology Challenge :** Data Science
 
 ---
-
+### Structure du projet
+```
+├── notebooks/
+│   ├── EDA.ipynb
+│   └── Machine_learning_models.ipynb
+├── src/
+│   ├── data_preprocessing.py
+│   ├── models.py
+│   ├── training.py
+│   ├── evaluate.py
+│   ├── main.py
+│   └── code_features.py
+├── models/
+│   ├── model.joblib
+│   └── model_tfidf.joblib
+├── README.md
+└── requirements.txt
+```
 ## Contexte
 
 Codeforces est une plateforme de programmation compétitive regroupant des milliers de problèmes d'algorithmique, chacun annoté par plusieurs **tags** représentant les notions algorithmiques mobilisées (`math`, `graphs`, `strings`, etc.).
@@ -46,24 +63,6 @@ probabilities: 92
 | Once upon a time, Oolimry saw a suffix array... | The first line contain 2 integers $$$n$$$ and ... | Print how many strings produce such a suffix array... | NoteIn the first test case, "abb" is the only ... | import sys\ninput = sys.stdin.readline\n... | [math] |
 | You are given an array of n elements, you must... | The first line contains integer n (1 ≤ n ≤ 100...) | Print integer k on the first line — the least ... |  | def gcd(a,b):\n if b==0:return a\n return ... | [number theory, math] |
 
-### Structure du projet
-```
-├── notebooks/
-│   ├── EDA.ipynb
-│   └── Machine_learning_models.ipynb
-├── src/
-│   ├── data_preprocessing.py
-│   ├── models.py
-│   ├── training.py
-│   ├── evaluate.py
-│   ├── main.py
-│   └── code_features.py
-├── models/
-│   ├── model.joblib
-│   └── model_tfidf.joblib
-├── README.md
-└── requirements.txt
-```
 ### Exploratory Data Analysis (EDA)
 - Longueur des descriptions, Distribution des tags, Co-occurrence des labels, Wordclouds par tag, Analyse des patterns algorithmiques dans le code
 #### Text Preprocessing
